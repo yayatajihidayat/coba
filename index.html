@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Selamat Ulang Tahun Adinda ke-17</title>
+  <style>
+    :root{
+      --accent:#ff6b81;
+      --accent2:#ffd166;
+      --bg:linear-gradient(135deg,#fff0f5 0%,#ffe9cf 50%,#e8faff 100%);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: "Poppins", sans-serif;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--bg);
+      overflow:hidden;
+      color:#222;
+    }
+
+    .card{
+      text-align:center;
+      padding:40px 24px 80px;
+      background:rgba(255,255,255,0.85);
+      border-radius:24px;
+      box-shadow:0 8px 30px rgba(0,0,0,0.15);
+      backdrop-filter:blur(10px);
+      width:90%;
+      max-width:520px;
+      position:relative;
+    }
+    h1{
+      font-size:clamp(28px,6vw,42px);
+      color:var(--accent);
+      margin-bottom:12px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow{
+      0%{text-shadow:0 0 10px var(--accent2);}
+      100%{text-shadow:0 0 25px var(--accent),0 0 40px var(--accent2);}
+    }
+    p{
+      font-size:clamp(16px,4vw,20px);
+      color:#444;
+      margin:0 auto 40px;
+      max-width:400px;
+      line-height:1.6;
+    }
+
+    .cake{
+      width:180px;
+      margin:0 auto;
+      position:relative;
+      animation: float 3s ease-in-out infinite;
+      transform: translateY(30px); /* kue lebih ke bawah */
+    }
+    @keyframes float{
+      0%,100%{transform:translateY(30px);}
+      50%{transform:translateY(20px);}
+    }
+    .cake .layer{
+      border-radius:12px;
+      margin:0 auto;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+    .bottom{width:180px;height:50px;background:linear-gradient(90deg,#ffb3b3,#fff4e0);}
+    .mid{width:150px;height:40px;background:linear-gradient(90deg,#fff7cc,#ffe6e6);position:relative;top:-6px;}
+    .top{width:120px;height:35px;background:linear-gradient(90deg,#fff,#ffe5f5);position:relative;top:-10px;}
+    .candle{
+      width:10px;height:35px;background:linear-gradient(#fff,#ffd6d6);
+      border-radius:4px;position:absolute;top:-40px;left:calc(50% - 5px);
+      display:flex;align-items:flex-start;justify-content:center;
+    }
+    .flame{
+      width:14px;height:18px;border-radius:50%;
+      background:radial-gradient(circle at 40% 30%,#fff 10%,#ff0 40%,#ff8000 70%,transparent 80%);
+      animation:flicker 0.5s infinite alternate;
+      transform:translateY(-8px);
+      box-shadow:0 0 15px 4px rgba(255,200,0,0.6);
+    }
+    @keyframes flicker{
+      0%{transform:translateY(-8px) scale(1);}
+      100%{transform:translateY(-10px) scale(1.1);}
+    }
+
+    /* confetti */
+    .confetti{
+      position:absolute;
+      width:10px;height:14px;
+      top:-10px;
+      opacity:0.9;
+      border-radius:2px;
+      animation: fall linear forwards;
+    }
+    @keyframes fall{
+      to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🎉 Selamat Ulang Tahun Adinda 🎂</h1>
+    <p>Semoga di usia ke-17 tahun ini, kamu semakin bahagia, sehat, dan selamat menjadi ratu.  
+    Sukses selalu Adinda, panjang umur yaa 💖</p>
+
+    <div class="cake">
+      <div class="candle"><div class="flame"></div></div>
+      <div class="layer top"></div>
+      <div class="layer mid"></div>
+      <div class="layer bottom"></div>
+    </div>
+  </div>
+
+  <script>
+    // Efek confetti tanpa henti
+    const colors = ['#ff6b81','#ffd166','#6fe7c4','#9ad1ff','#c29dff'];
+    function createConfetti(){
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      const size = Math.random()*8 + 6;
+      confetti.style.width = size+'px';
+      confetti.style.height = (size+4)+'px';
+      confetti.style.left = Math.random()*100 + 'vw';
+      confetti.style.background = colors[Math.floor(Math.random()*colors.length)];
+      confetti.style.animationDuration = 2 + Math.random()*3 + 's';
+      confetti.style.transform = 'rotate('+(Math.random()*360)+'deg)';
+      document.body.appendChild(confetti);
+      setTimeout(()=>confetti.remove(),5000);
+    }
+    // Jalankan terus menerus
+    setInterval(()=>{for(let i=0;i<5;i++)createConfetti();},200);
+  </script>
+</body>
+</html>
